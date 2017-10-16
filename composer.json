@@ -1,0 +1,39 @@
+{
+    "name": "anam/captcha",
+    "description": "reCAPTCHA and invisible reCAPTCHA for Laravel. reCAPTCHA protects your app against spam and bot.",
+    "keywords": [
+        "Laravel Captcha",
+        "reCAPTCHA",
+        "reCAPTCHA V2",
+        "Invisible reCAPTCHA",
+        "Invisible captcha",
+        "Captcha"
+    ],
+    "type": "library",
+    "homepage": "https://github.com/anam-hossain/captcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anam Hossain",
+            "email": "enam33@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "google/recaptcha": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anam\\Captcha\\" : "src/" 
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Anam\\Captcha\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4",
+        "orchestra/testbench": "^3.5"
+    }
+}
