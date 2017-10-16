@@ -35,5 +35,15 @@
     "require-dev": {
         "phpunit/phpunit": "^6.4",
         "orchestra/testbench": "^3.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anam\\Captcha\\ServiceProvider"
+            ],
+            "aliases": {
+                "Captcha": "Anam\\Captcha\\Facade"
+            }
+        }
     }
 }
