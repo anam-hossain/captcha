@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class Captcha extends ReCaptcha
 {
     /**
-     * var \ReCaptcha\Response
+     * @var \ReCaptcha\Response
      */
-    public function $response;
+    public $response;
 
     /**
      * Create a configured instance to use the reCAPTCHA service.
