@@ -26,13 +26,10 @@ class CaptchaServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('captcha', function ($siteKey) {
-
-            $this->loadViewsFrom(__DIR__.'/../views', 'captcha');
-            
-            return view('captcha::recaptcha', compact('siteKey'))->render();
+            return  "<script src='https://www.google.com/recaptcha/api.js'></script>".
+                    "<div class='g-recaptcha' data-sitekey='{{ $siteKey }}'></div>";
         });
     }
-
 
     /**
      * Get the services provided by the provider.
