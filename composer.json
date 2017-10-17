@@ -40,10 +40,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Anam\\Captcha\\ServiceProvider"
+                "Anam\\Captcha\\ServiceProvider\\CaptchaServiceProvider"
             ],
             "aliases": {
-                "Captcha": "Anam\\Captcha\\Facade"
+                "Captcha": "Anam\\Captcha\\Facade\\Captcha"
             }
         }
     }
