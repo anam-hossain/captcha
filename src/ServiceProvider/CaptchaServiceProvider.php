@@ -7,13 +7,6 @@ use Illuminate\Support\ServiceProvider;
 class CaptchaServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Register the service provider.
      *
      * @return void
@@ -33,6 +26,7 @@ class CaptchaServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('captcha', function ($siteKey) {
+
             $this->loadViewsFrom(__DIR__.'/../views', 'captcha');
             
             return view('captcha::recaptcha', compact('siteKey'))->render();
