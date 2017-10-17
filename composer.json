@@ -3,6 +3,7 @@
     "description": "reCAPTCHA and invisible reCAPTCHA for Laravel. reCAPTCHA protects your app against spam and bot.",
     "keywords": [
         "Laravel Captcha",
+        "Laravel reCAPTCHA",
         "reCAPTCHA",
         "reCAPTCHA V2",
         "Invisible reCAPTCHA",
