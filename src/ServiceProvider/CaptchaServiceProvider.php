@@ -33,6 +33,24 @@ class CaptchaServiceProvider extends ServiceProvider
             return  "<script src='https://www.google.com/recaptcha/api.js'></script>".
                     "<div class='g-recaptcha' data-sitekey='{$siteKey}'></div>";
         });
+
+        Blade::directive('invisiblecaptcha', function ($siteKey = null) {
+
+            $siteKey = $this->loadSiteKey($siteKey);
+
+            return  "<script src='https://www.google.com/recaptcha/api.js'></script>".
+                    "<script>
+                        function onSubmit(token) {
+                            document.forms[0].submit();
+                        }
+                    </script>".
+                    "<button
+                        class='g-recaptcha'
+                        data-sitekey='{$siteKey}'
+                        data-callback='onSubmit'>
+                        Submit
+                    </button>";
+        });
     }
 
     /**
