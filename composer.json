@@ -30,7 +30,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Anam\\Captcha\\Tests\\": "tests"
+            "Anam\\Captcha\\Tests\\": "tests/"
         }
     },
     "require-dev": {
