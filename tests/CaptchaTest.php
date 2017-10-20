@@ -7,13 +7,10 @@ use Anam\Captcha\Captcha;
 class CaptchaTest extends TestCase
 {
     /**
-     * Check that the multiply method returns correct result
-     * 
-     * @return void
+     * @expectedException SecretNotFoundException
      */
-    public function testMultiplyReturnsCorrectValue()
+    public function testExceptionThrownOnInvalidSecret($secret = '')
     {
-        $this->assertSame(16, 16);
-        $this->assertSame(18, 18);
+        $captcha = new Captcha($secret);
     }
 }
