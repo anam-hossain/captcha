@@ -7,7 +7,7 @@ use Anam\Captcha\Captcha;
 class CaptchaTest extends TestCase
 {
     /**
-     * @expectedException SecretNotFoundException
+     * @expectedException \Anam\Captcha\SecretNotFoundException
      */
     public function testExceptionThrownOnInvalidSecret($secret = '')
     {
