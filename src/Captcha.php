@@ -2,7 +2,7 @@
 
 namespace Anam\Captcha;
 
-use SecretNotFoundException;
+use Anam\Captcha\SecretNotFoundException;
 use ReCaptcha\ReCaptcha;
 use Illuminate\Http\Request;
 
