@@ -24,7 +24,7 @@ Alternatively, add the dependency directly to your composer.json file:
 
 ## Integrations
 
-#### Laravel 5.5 integrations
+#### Laravel 5.5+ integrations
 
 ##### Package Discovery
 `Anam\Captcha` utilize the Laravel's package auto discovery feature. So, you don't need to add manually Service provider and Facade in Laravel application's config/app.php. Laravel will automatically register the service provider and facades for you.
@@ -48,6 +48,16 @@ Add the facade of this package to the `$aliases` array.
 ```
 
 You can now use this facade in place of instantiating the converter yourself in the following examples.
+
+## Configuration
+First, register keys for your site at https://www.google.com/recaptcha/admin
+
+Add `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET` in `.env` file :
+
+```
+RECAPTCHA_SITE_KEY=site_key
+RECAPTCHA_SECRET=secret
+```
 
 ## Usage
 
