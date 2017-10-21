@@ -51,8 +51,6 @@ You can now use this facade in place of instantiating the converter yourself in 
 
 ## Usage
 
-### PDF conversion
-
 ```php
 $captcha = new \Anam\Captcha\Captcha();
 
