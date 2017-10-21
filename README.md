@@ -1,4 +1,4 @@
-# reCAPTCHA and invisible reCAPTCHA for Laravel
+# reCAPTCHA V2 and invisible reCAPTCHA for Laravel
 
 reCAPTCHA protects your app against spam and bot. This package is tested with Laravel 5.5.
 
