@@ -88,11 +88,11 @@ Just add `@captcha()` blade directive to the form.
 
 ```html
 <form method="POST" action="/captcha" id="captcha-form">
-	{{ csrf_field() }}
-    <label>Name</label>
-    <input type="text" name="name">
-    <label>Your message</label>
-    <textarea name="message" rows="5"></textarea>
+  {{ csrf_field() }}
+  <label>Name</label>
+  <input type="text" name="name">
+  <label>Your message</label>
+  <textarea name="message" rows="5"></textarea>
   <br>
   @captcha()
   <br>
@@ -109,11 +109,11 @@ Add `@invisiblecaptcha()` directive to the form where you want to appear the sub
 
 ```html
 <form method="POST" action="/captcha" id="captcha-form">
-	{{ csrf_field() }}
-    <label>Name</label>
-    <input type="text" name="name">
-    <label>Your message</label>
-    <textarea name="message" rows="5"></textarea>
+  {{ csrf_field() }}
+  <label>Name</label>
+  <input type="text" name="name">
+  <label>Your message</label>
+  <textarea name="message" rows="5"></textarea>
   <br>
   @invisiblecaptcha()
 </form>
