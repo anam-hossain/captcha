@@ -59,6 +59,21 @@ RECAPTCHA_SITE_KEY=site_key
 RECAPTCHA_SECRET=secret
 ```
 
+By default, The package will try to load keys from environment. However, you can set it manually:
+
+```php
+$captcha = new \Anam\Captcha\Captcha('recaptcha_secret');
+```
+Blade directive:
+
+```php
+// reCAPTCHA v2
+@captcha(site_key)
+
+// Invisible reCAPTCHA
+@invisiblecaptcha(site_key)
+```
+
 ## Usage
 
 ```php
