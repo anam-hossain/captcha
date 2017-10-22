@@ -1,6 +1,7 @@
 <?php
 namespace Anam\Captcha\ServiceProvider;
 
+use Anam\Captcha\Captcha;
 use Anam\Captcha\SiteKeyNotFoundException;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
