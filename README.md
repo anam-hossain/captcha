@@ -68,7 +68,7 @@ By default, The package will try to load keys from environment. However, you can
 ```php
 $captcha = new \Anam\Captcha\Captcha('recaptcha_secret');
 ```
-Blade directive:
+Blade directives:
 
 ```php
 // reCAPTCHA v2
