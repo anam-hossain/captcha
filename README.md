@@ -2,6 +2,10 @@
 
 reCAPTCHA protects your app against spam and bot. This package is tested with Laravel 5.5.
 
+![recaptcha](https://developers.google.com/recaptcha/images/newCaptchaAnchor.gif "reCAPTCHA V2")
+
+
+
 ## Requirements
 
 - PHP 7.0+
@@ -76,11 +80,81 @@ Blade directive:
 
 ## Usage
 
-```php
-$captcha = new \Anam\Captcha\Captcha();
+### Client side
 
-$captcha->check($request);
+#### reCAPTCHA V2:
+
+Just add `@captcha()` blade directive to the form.
+
+```html
+<form method="POST" action="/captcha" id="captcha-form">
+	{{ csrf_field() }}
+    <label>Name</label>
+    <input type="text" name="name">
+    <label>Your message</label>
+    <textarea name="message" rows="5"></textarea>
+  <br>
+  @captcha()
+  <br>
+  <input type="submit" value="Submit">
+</form>
 ```
+
+For more advanced integration, Please visit the following link:
+https://developers.google.com/recaptcha/docs/display
+
+#### Invisible reCAPTCHA:
+
+Add `@invisiblecaptcha()` directive to the form where you want to appear the submit button. Please note, The `@invisiblecaptcha` directive will inject the submit button for you. If you want to style the submit button, `.g-recaptcha` class available for you.
+
+```html
+<form method="POST" action="/captcha" id="captcha-form">
+	{{ csrf_field() }}
+    <label>Name</label>
+    <input type="text" name="name">
+    <label>Your message</label>
+    <textarea name="message" rows="5"></textarea>
+  <br>
+  @invisiblecaptcha()
+</form>
+```
+
+Caveat: If view has more than one forms, the `@invisiblecaptcha()` might not work as it will submit the first form. In these cases, you have to integrate the reCAPTCHA manually.
+
+Please visit the following link:
+https://developers.google.com/recaptcha/docs/invisible
+
+
+### Server side
+
+**Handling the request:**
+
+```php
+use Anam\Captcha\Captcha;
+use Illuminate\Http\Request;
+
+class CaptchaController extends Controller
+{
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Anam\Captcha\Captcha  $captcha
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, Captcha $captcha)
+    {
+        $response = $captcha->check($request);
+
+        if (! $response->isVerified()) {
+            dd($response->errors());
+        }
+        
+        dd($response->hostname());
+    }
+}
+```
+
 
 ## Credits
 
