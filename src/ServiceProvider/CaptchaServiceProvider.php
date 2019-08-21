@@ -27,11 +27,15 @@ class CaptchaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+		$this->publishes([
+              __DIR__.'/../../config/captcha.php' => config_path('captcha.php'),
+        ]);
+		
         Blade::directive('captcha', function ($siteKey = null) {
 
             $siteKey = $this->loadSiteKey($siteKey);
 
-            return  "<script src='https://www.google.com/recaptcha/api.js'></script>".
+            return  "<script src='https://www.google.com/recaptcha/api.js' async defer></script>".
                     "<div class='g-recaptcha' data-sitekey='{$siteKey}'></div>";
         });
 
@@ -74,8 +78,8 @@ class CaptchaServiceProvider extends ServiceProvider
     {
         if ($siteKey) return $siteKey;
 
-        if (env('RECAPTCHA_SITE_KEY')) {
-            return env('RECAPTCHA_SITE_KEY');
+        if (config('captcha.site_key')) {
+            return config('captcha.site_key');
         }
 
         throw new SiteKeyNotFoundException;
