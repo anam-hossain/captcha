@@ -165,7 +165,7 @@ class CaptchaController extends Controller
 
 **app\Http\Controllers\Auth\RegisterController.php**
 
-Update App\User below with App\Models\User if your user model class is stored in the Models folder.
+Replace 'App\User' below with 'App\Models\User' if your user model class is stored in the Models folder.
 
 ```php
 <?php
