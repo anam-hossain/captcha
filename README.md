@@ -63,6 +63,12 @@ RECAPTCHA_SITE_KEY=site_key
 RECAPTCHA_SECRET=secret
 ```
 
+Run vendor publish to add the captcha.php file to config:
+
+```
+php artisan vendor:publish --provider=Anam\Captcha\ServiceProvider\CaptchaServiceProvider
+```
+
 By default, The package will try to load keys from environment. However, you can set them manually:
 
 ```php
@@ -151,6 +157,139 @@ class CaptchaController extends Controller
         }
         
         dd($response->hostname());
+    }
+}
+```
+
+### Laravel User Registration Controller
+
+**app\Http\Controllers\Auth\RegisterController.php**
+
+```php
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Rules\GoogleRecaptcha;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
+class RegisterController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+		$messages = [
+			'g-recaptcha-response.required' => 'You must verify that you are not a robot.',
+		];
+		
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+			'g-recaptcha-response' => ['required', new GoogleRecaptcha]
+        ], $messages);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+}
+```
+
+**app\Rules\GoogleRecaptcha.php**
+
+```php
+<?php
+
+namespace App\Rules;
+
+use Anam\Captcha\Captcha;
+use Illuminate\Contracts\Validation\Rule;
+
+class GoogleRecaptcha implements Rule
+{
+    /**
+     * Create a new rule instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+		$captcha = new Captcha();
+		$response = $captcha->check(request());
+		return $response->isVerified();
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'Are you a robot?';
     }
 }
 ```
