@@ -217,9 +217,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-		$messages = [
-			'g-recaptcha-response.required' => 'You must verify that you are not a robot.',
-		];
+	    $messages = [
+	    	'g-recaptcha-response.required' => 'You must verify that you are not a robot.',
+        ];
 		
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
