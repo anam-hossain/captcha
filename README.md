@@ -165,12 +165,14 @@ class CaptchaController extends Controller
 
 **app\Http\Controllers\Auth\RegisterController.php**
 
+Update App\User below with App\Models\User if your user model class is stored in the Models folder.
+
 ```php
 <?php
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\User;
 use App\Http\Controllers\Controller;
 use App\Rules\GoogleRecaptcha;
 use Illuminate\Support\Facades\Hash;
@@ -217,8 +219,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-	    $messages = [
-	    	'g-recaptcha-response.required' => 'You must verify that you are not a robot.',
+        $messages = [
+        	'g-recaptcha-response.required' => 'You must verify that you are not a robot.',
         ];
 		
         return Validator::make($data, [
