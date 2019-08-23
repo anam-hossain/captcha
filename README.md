@@ -155,6 +155,7 @@ class CaptchaController extends Controller
 }
 ```
 
+## Example
 
 ## Credits
 
