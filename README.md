@@ -296,7 +296,6 @@ class GoogleRecaptcha implements Rule
 }
 ```
 
-
 ## Credits
 
 - [Anam Hossain](https://github.com/anam-hossain)
