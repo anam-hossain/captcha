@@ -33,7 +33,11 @@ class Captcha extends ReCaptcha
     {
         if ($secret) return $secret;
 
-        if (config('captcha.secret')) return config('captcha.secret');
+        if (config('captcha.secret')) { 
+            return config('captcha.secret');
+        } elseif (env('RECAPTCHA_SECRET')) {
+            return env('RECAPTCHA_SECRET');
+        }
 
         throw new SecretNotFoundException;
     }
