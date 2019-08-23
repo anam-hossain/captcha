@@ -161,11 +161,11 @@ class CaptchaController extends Controller
 }
 ```
 
+## Example
+
 ### Laravel User Registration Controller
 
 **app\Http\Controllers\Auth\RegisterController.php**
-
-Replace 'App\User' below with 'App\Models\User' if your user model class is stored in the Models folder.
 
 ```php
 <?php
@@ -227,7 +227,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-			'g-recaptcha-response' => ['required', new GoogleRecaptcha]
+            'g-recaptcha-response' => ['required', new GoogleRecaptcha]
         ], $messages);
     }
 
