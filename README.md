@@ -270,9 +270,9 @@ class GoogleRecaptcha implements Rule
      */
     public function passes($attribute, $value)
     {
-		$captcha = new Captcha();
-		$response = $captcha->check(request());
-		return $response->isVerified();
+        $captcha = new Captcha();
+        $response = $captcha->check(request());
+        return $response->isVerified();
     }
 
     /**
