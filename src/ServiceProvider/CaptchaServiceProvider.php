@@ -28,8 +28,8 @@ class CaptchaServiceProvider extends ServiceProvider
     public function boot()
     {
 		$this->publishes([
-              __DIR__.'/../../config/captcha.php' => config_path('captcha.php'),
-        ]);
+              __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
+        ], 'CaptchaConfig');
 		
         Blade::directive('captcha', function ($siteKey = null) {
 

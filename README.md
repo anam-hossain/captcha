@@ -66,7 +66,7 @@ RECAPTCHA_SECRET=secret
 Run vendor publish to add the captcha.php file to config:
 
 ```
-php artisan vendor:publish --provider=Anam\Captcha\ServiceProvider\CaptchaServiceProvider
+php artisan vendor:publish --tag=CaptchaConfig
 ```
 
 By default, The package will try to load keys from environment. However, you can set them manually:
