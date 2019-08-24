@@ -81,7 +81,7 @@ class CaptchaServiceProvider extends ServiceProvider
         if (config('captcha.site_key')) {
             return config('captcha.site_key');
         } elseif (env('RECAPTCHA_SITE_KEY')) {
-        	return env('RECAPTCHA_SITE_KEY');
+            return env('RECAPTCHA_SITE_KEY');
         }
 
         throw new SiteKeyNotFoundException;
