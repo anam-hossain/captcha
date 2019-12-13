@@ -35,7 +35,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
             $siteKey = $this->loadSiteKey($siteKey);
 
-            return  "<script src='https://www.google.com/recaptcha/api.js' async defer></script>".
+            return  "<script src='https://www.google.com/recaptcha/api.js?hl=".config('app.locale')."' async defer></script>".
                     "<div class='g-recaptcha' data-sitekey='{$siteKey}'></div>";
         });
 
@@ -43,7 +43,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
             $siteKey = $this->loadSiteKey($siteKey);
 
-            return  "<script src='https://www.google.com/recaptcha/api.js'></script>".
+            return  "<script src='https://www.google.com/recaptcha/api.js?hl=".config('app.locale')."'></script>".
                     "<script>
                         function onSubmit(token) {
                             document.forms[0].submit();
