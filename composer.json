@@ -1,5 +1,5 @@
 {
-    "name": "anam/captcha",
+    "name": "turanzamanli/captcha",
     "description": "reCAPTCHA and invisible reCAPTCHA for Laravel. reCAPTCHA protects your app against spam and bot.",
     "keywords": [
         "Laravel Captcha",
@@ -11,12 +11,12 @@
         "Captcha"
     ],
     "type": "library",
-    "homepage": "https://github.com/anam-hossain/captcha",
+    "homepage": "https://github.com/turanzamanli/captcha",
     "license": "MIT",
     "authors": [
         {
-            "name": "Anam Hossain",
-            "email": "enam33@gmail.com"
+            "name": "Turan Zamanli",
+            "email": "turanzamanli@gmail.com"
         }
     ],
     "require": {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Anam\\Captcha\\" : "src/" 
+            "Turanzamanli\\Captcha\\" : "src/" 
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Anam\\Captcha\\Tests\\": "tests/"
+            "Turanzamanli\\Captcha\\Tests\\": "tests/"
         }
     },
     "require-dev": {
@@ -41,10 +41,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Anam\\Captcha\\ServiceProvider\\CaptchaServiceProvider"
+                "Turanzamanli\\Captcha\\ServiceProvider\\CaptchaServiceProvider"
             ],
             "aliases": {
-                "Captcha": "Anam\\Captcha\\Facade\\Captcha"
+                "Captcha": "Turanzamanli\\Captcha\\Facade\\Captcha"
             }
         }
     }
